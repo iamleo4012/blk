@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --color-navy: #141a2e;
+  --color-navy-deep: #10152a;
+  --color-accent: #7c5cff;
+  --color-accent-soft: #ece6ff;
+  --color-charcoal: #1c2030;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Leaflet map container needs an explicit height. */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 14px;
+  z-index: 0;
+  font-family: inherit;
+}
+
+/* Native audio controls hidden; the custom row controls playback. */
+audio.hidden-audio {
+  display: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    inset: 0;
+    padding: 24px;
+  }
+}

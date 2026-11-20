@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/*
+  Staff Task App — design tokens derived from the reference image.
+  Reference viewport: 393 × 852. All main-screen metrics map the measured
+  reference proportions onto that viewport.
+*/
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --color-bg-start: #f7f8ff;
+  --color-bg-end: #edf1ff;
+  --color-wave-back: #dde4fb;
+  --color-wave-front: #edf1fc;
+
+  --color-green-start: #32d74b;
+  --color-green-end: #00a52b;
+  --color-blue-start: #0a84ff;
+  --color-blue-end: #0066e8;
+  --color-end-red: #ff3b30;
+  --color-charcoal: #1c1c1e;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Circular action buttons (Start / Record) */
+.action-circle {
+  position: relative;
+  border-radius: 9999px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: transform 0.12s ease, filter 0.12s ease;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.action-circle:active {
+  transform: scale(0.97);
+  filter: brightness(0.96);
+}
+
+/* Glossy top highlight shared by the two circles, as in the reference */
+.action-circle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    58% 46% at 50% 24%,
+    rgba(255, 255, 255, 0.32) 0%,
+    rgba(255, 255, 255, 0.10) 46%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  pointer-events: none;
+}
+
+/* Translucent pill buttons (Add Attachments / End) */
+.action-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  border: 1px solid rgba(226, 230, 240, 0.7);
+  box-shadow:
+    0 6px 16px rgba(30, 41, 82, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.action-pill:active {
+  transform: scale(0.98);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.65) 100%
+  );
+}
+
+@keyframes wave-drift {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-14px);
+  }
+}
